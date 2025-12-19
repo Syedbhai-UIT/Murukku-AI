@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Murukku AI 🍘 - Your Anna University AI Buddy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bgDark: '#0a0a0f',
+                        bgCard: '#1a1008',
+                        bgInput: '#2a1a10',
+                        accent: '#f97316',
+                        accentLight: '#fbbf24',
+                        accentDark: '#ea580c',
+                        success: '#22c55e',
+                        gold: '#eab308',
+                    },
+                    animation: {
+                        'float': 'float 15s infinite ease-in-out',
+                        'pulse-slow': 'pulse 3s infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translate(0, 0)' },
+                            '25%': { transform: 'translate(50px, -50px)' },
+                            '50%': { transform: 'translate(100px, 0)' },
+                            '75%': { transform: 'translate(50px, 50px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a1008;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #f97316;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #fbbf24;
+        }
+        
+        .glass-effect {
+            background: rgba(18, 18, 26, 0.8);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-bgDark text-white font-sans antialiased overflow-x-hidden">
+    <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
