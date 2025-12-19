@@ -342,6 +342,45 @@ Bot/
 
 ---
 
+## 🌐 Production Deployment (Vercel + Railway)
+
+### Quick Deploy Guide
+
+#### Step 1: Deploy Backend to Railway
+
+1. Go to **[railway.app](https://railway.app)** → Sign up with GitHub
+2. Click **"New Project"** → **"Deploy from GitHub Repo"**
+3. Select your **Murukku-AI** repository
+4. Go to **Settings** → Set **Root Directory** to `backend`
+5. Go to **Variables** tab → Add:
+   - `OPENROUTER_API_KEY` = your API key
+6. Deploy → Copy URL (e.g., `https://murukku-ai.up.railway.app`)
+
+#### Step 2: Deploy Frontend to Vercel
+
+1. Go to **[vercel.com](https://vercel.com)** → Sign up with GitHub
+2. Click **"Add New"** → **"Project"** → Import repo
+3. Set **Framework:** `Vite`, **Output Directory:** `dist`
+4. Add **Environment Variable:**
+   - `VITE_API_URL` = your Railway URL from Step 1
+5. Deploy → Get your public URL!
+
+#### Step 3: Update CORS
+
+1. Go back to **Railway** → **Variables**
+2. Add: `FRONTEND_URL` = your Vercel URL
+3. Railway auto-redeploys ✅
+
+### Environment Variables Summary
+
+| Platform | Variable | Description |
+|----------|----------|-------------|
+| **Railway** | `OPENROUTER_API_KEY` | Your OpenRouter API key |
+| **Railway** | `FRONTEND_URL` | Your Vercel frontend URL |
+| **Vercel** | `VITE_API_URL` | Your Railway backend URL |
+
+---
+
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
