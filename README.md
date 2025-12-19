@@ -64,14 +64,36 @@ Murukku AI (முருக்கு AI) is an intelligent AI assistant specific
 
 - **Node.js** 18+ 
 - **Python** 3.10+
-- **OpenRouter API Key** (free tier available)
+- **OpenRouter API Key** (FREE - takes 5 minutes)
 
-### 1️⃣ Clone & Install
+### ⚡ Automatic Setup (Easiest!)
+
+**Windows:**
+```bash
+setup.bat
+```
+
+**Linux/Mac:**
+```bash
+chmod +x setup.sh
+./setup.sh
+```
+
+This will automatically:
+- ✅ Install all dependencies
+- ✅ Create `.env` and `backend/.env`
+- ✅ Guide you through API key setup
+
+---
+
+### 📋 Manual Setup (5 Steps)
+
+#### 1️⃣ Clone & Install
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/murukku-ai.git
-cd murukku-ai
+git clone https://github.com/Syedbhai-UIT/Murukku-AI.git
+cd Murukku-AI
 
 # Install frontend dependencies
 npm install
@@ -79,47 +101,102 @@ npm install
 # Install backend dependencies
 cd backend
 pip install -r requirements.txt
+cd ..
 ```
 
-### 2️⃣ Configure Environment
+#### 2️⃣ Get FREE API Key (5 minutes)
 
-Create a `.env` file in the `backend` folder:
-
-```env
-OPENROUTER_API_KEY=sk-or-v1-your-api-key-here
-```
-
-<details>
-<summary><b>🔑 How to get OpenRouter API Key (FREE)</b></summary>
-
-1. Go to [openrouter.ai](https://openrouter.ai)
+1. Go to **[openrouter.ai](https://openrouter.ai)**
 2. Sign up for free
-3. Navigate to **Keys** section
-4. Create a new API key
-5. Copy and paste it in your `.env` file
+3. Go to **Keys** section
+4. Create new API key
+5. Copy key starting with `sk-or-v1-`
 
-> 💡 **Tip:** OpenRouter offers free credits and many free models!
+### 3️⃣ Configure Environment
 
-</details>
-
-### 3️⃣ Run the Application
+**Create `.env` file in root folder:**
 
 ```bash
-# Terminal 1: Start Backend (from backend folder)
+cp .env.example .env
+```
+
+**Edit `.env` and paste your API key:**
+
+```env
+VITE_OPENROUTER_API_KEY=sk-or-v1-your-key-here
+VITE_API_URL=http://localhost:8001
+VITE_SITE_URL=http://localhost:3000
+VITE_SITE_NAME=Murukku AI
+```
+
+> ⚠️ **Important:** `.env` is gitignored - never commit it!
+
+### 4️⃣ Run the Application
+
+**Terminal 1 - Backend:**
+```bash
 cd backend
 python -m uvicorn main:app --reload --port 8001
+```
 
-# Terminal 2: Start Frontend (from root folder)
+**Terminal 2 - Frontend:**
+```bash
 npm run dev
 ```
 
-### 4️⃣ Open in Browser
+### 5️⃣ Open in Browser
 
 ```
 🌐 Frontend: http://localhost:3000
 🔌 Backend API: http://localhost:8001
 📚 API Docs: http://localhost:8001/docs
 ```
+
+---
+
+## 🔐 Security & API Keys
+
+### ✅ Safety Features:
+- ✅ `.env` is in `.gitignore` (never pushed to GitHub)
+- ✅ API keys loaded from environment variables only
+- ✅ No hardcoded secrets in source code
+- ✅ `.env.example` + `backend/.env.example` show structure without secrets
+- ✅ Backend validates API key exists before running
+
+### 📂 Environment Files:
+
+**Root directory `.env.example`:**
+```env
+VITE_OPENROUTER_API_KEY=sk-or-v1-your-key-here
+VITE_API_URL=http://localhost:8001
+VITE_SITE_URL=http://localhost:3000
+VITE_SITE_NAME=Murukku AI
+```
+
+**Backend directory `backend/.env.example`:**
+```env
+OPENROUTER_API_KEY=sk-or-v1-your-key-here
+BACKEND_PORT=8001
+ENVIRONMENT=development
+```
+
+### ⚠️ Critical Remember:
+- **NEVER** commit `.env` file (it's in `.gitignore`)
+- **NEVER** share your API key in code or GitHub
+- Each developer needs their own `.env` file
+- Always use `.env.example` as a template
+- If you accidentally exposed a key, regenerate it immediately on openrouter.ai
+
+### 🔄 Setup for Team Members:
+
+Each person cloning the repo should:
+1. Copy `.env.example` to `.env` in root folder
+2. Copy `backend/.env.example` to `backend/.env`
+3. Get their own FREE OpenRouter API key
+4. Paste key into `.env` files
+5. Run the app
+
+**No key sharing needed!** Each person has their own quota.
 
 ---
 

@@ -34,7 +34,14 @@ app.add_middleware(
 # ============================================================================
 
 OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions"
-OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "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")
+OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
+
+if not OPENROUTER_API_KEY:
+    raise ValueError(
+        "❌ OPENROUTER_API_KEY not found!\n"
+        "Please set it in your environment or .env file\n"
+        "Get free API key from: https://openrouter.ai/keys"
+    )
 
 # Model Catalog
 MODEL_CATALOG = {
